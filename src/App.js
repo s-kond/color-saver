@@ -1,8 +1,9 @@
 import { nanoid } from 'nanoid';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import { ColorCard } from './components/ColorCard.js/ColorCard';
 import Create from './components/Form/Create';
+import { setLocalStorage, loadLocalStorage } from './lib/localStorage';
 
 
 const colorCodes = [ 
@@ -12,7 +13,11 @@ const colorCodes = [
 ];
 
 function App() {
-  const [colorArray, setColorArray] = useState(colorCodes);
+  const [colorArray, setColorArray] = useState(loadLocalStorage("colorSaverArray") ?? colorCodes);
+
+  useEffect(()=>{
+    setLocalStorage("colorSaverArray", colorArray);
+  },[colorArray])
 
   function addColorCard(newColor){
       try {
