@@ -2,7 +2,7 @@ import { useState } from "react"
 import "./Create.css"
 
 export default function Create({onHandleSubmit}) {
-    const [color, setColor] = useState("#CD5C5C")
+    const [color, setColor] = useState("#000000")
     
     function handleSetColor(chosenColor){
         setColor(chosenColor)
