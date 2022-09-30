@@ -1,8 +1,9 @@
 import { nanoid } from 'nanoid';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import { ColorCard } from './components/ColorCard.js/ColorCard';
 import Create from './components/Form/Create';
+import { setLocalStorage, loadLocalStorage } from './lib/localStorage';
 
 
 const colorCodes = [ 
@@ -12,23 +13,36 @@ const colorCodes = [
 ];
 
 function App() {
-  const [colorArray, setColorArray] = useState(colorCodes);
+  const [colorArray, setColorArray] = useState(loadLocalStorage("colorSaverArray") ?? colorCodes);
 
-  function addColor(newColor){
+  useEffect(()=>{
+    setLocalStorage("colorSaverArray", colorArray);
+  },[colorArray])
+
+  function addColorCard(newColor){
       try {
-        console.log(newColor)
         setColorArray([...colorArray, {id: nanoid(), color: newColor}])
       } catch (error) {
       console.log(error.message)
     }
   }
 
+  function deleteColorCard(event, cardId){
+    event.stopPropagation();
+    setColorArray(colorArray.filter(card=> cardId === card.id ? "" : card ))
+  }
+
+  function editColorCard(event, cardId, newColor){
+    event.stopPropagation();
+    setColorArray(colorArray.map(card=>cardId === card.id ? {id: card.id, color: newColor} : card))
+  }
+
   return (
     <div className="App">
       <h1>Color Saver</h1>
-      <Create onHandleSubmit= {addColor}/>
+      <Create onHandleSubmit= {addColorCard}/>
       <div className='color-container'>
-        <ColorCard codes={colorArray} />
+        <ColorCard codes={colorArray} onHandleDelete={deleteColorCard} onHandleEdit={editColorCard}/>
       </div>
     </div>
   );

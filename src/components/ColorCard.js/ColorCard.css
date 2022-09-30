@@ -1,4 +1,5 @@
 .color-container__card {
+    position: relative;
     width: 100%;
     max-width: 300px;
     height: 200px;
@@ -6,20 +7,43 @@
     justify-content: center;
     align-items: center;
     border-radius: 10px;
+    border: unset;
 }
 
-.colorText-button {
+.color-container__card:hover {
+    cursor: pointer;
+}
+
+.colorText-input {
     background-color: rgba(255, 255, 255, 0.602);
     padding: 20px;
+    text-align: center;
     border: unset;
     border-radius: 10px;
     box-shadow: 1px 1px 1px black;
 }
 
-.colorText-button:hover {
-    cursor: pointer;
+.colorText-input:hover {
+    cursor: text;
 }
 
-.colorText-button:active {
+.colorText-input:active {
     background-color: rgba(255, 255, 255, 0.949);
+}
+
+.delete-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    color: black;
+    background-color: transparent;
+    border-radius: 20px;
+    border: 1px solid black;
+    font-weight: bold;
+    font-size: medium;
+}
+
+.delete-button:hover {
+    cursor: pointer;
 }
