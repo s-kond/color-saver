@@ -7,21 +7,27 @@
     justify-content: center;
     align-items: center;
     border-radius: 10px;
+    border: unset;
 }
 
-.colorText-button {
+.color-container__card:hover {
+    cursor: pointer;
+}
+
+.colorText-input {
     background-color: rgba(255, 255, 255, 0.602);
     padding: 20px;
+    text-align: center;
     border: unset;
     border-radius: 10px;
     box-shadow: 1px 1px 1px black;
 }
 
-.colorText-button:hover {
-    cursor: pointer;
+.colorText-input:hover {
+    cursor: text;
 }
 
-.colorText-button:active {
+.colorText-input:active {
     background-color: rgba(255, 255, 255, 0.949);
 }
 

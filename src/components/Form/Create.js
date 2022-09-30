@@ -2,7 +2,7 @@ import { useState } from "react"
 import "./Create.css"
 
 export default function Create({onHandleSubmit}) {
-    const [color, setColor] = useState("")
+    const [color, setColor] = useState("#CD5C5C")
     
     function handleSetColor(chosenColor){
         setColor(chosenColor)
@@ -20,7 +20,7 @@ export default function Create({onHandleSubmit}) {
         <form onSubmit={onSubmit}>
             <h2>New Card</h2>
             <input className="colorPicker" name="colorPicker" id="colorPicker" type="color" value={color} onChange={(event)=>handleSetColor(event.target.value)}/>
-            <input className="colorTextInput" name="colorTextInput" type="text" value={color} onInput={(event)=>handleSetColor(event.target.value)} maxLength="7" />
+            <input className="colorTextInput" name="colorTextInput" type="text" value={color} onInput={(event)=>handleSetColor(event.target.value)} maxLength="7"/>
             <button className="addColorButton" type="submit">Add</button>
         </form>
     )

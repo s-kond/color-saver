@@ -22,8 +22,14 @@ function App() {
     }
   }
 
-  function deleteColorCard(cardId){
+  function deleteColorCard(event, cardId){
+    event.stopPropagation();
     setColorArray(colorArray.filter(card=> cardId === card.id ? "" : card ))
+  }
+
+  function editColorCard(event, cardId, newColor){
+    event.stopPropagation();
+    setColorArray(colorArray.map(card=>cardId === card.id ? {id: card.id, color: newColor} : card))
   }
 
   return (
@@ -31,7 +37,7 @@ function App() {
       <h1>Color Saver</h1>
       <Create onHandleSubmit= {addColorCard}/>
       <div className='color-container'>
-        <ColorCard codes={colorArray} onHandleDelete={deleteColorCard}/>
+        <ColorCard codes={colorArray} onHandleDelete={deleteColorCard} onHandleEdit={editColorCard}/>
       </div>
     </div>
   );
