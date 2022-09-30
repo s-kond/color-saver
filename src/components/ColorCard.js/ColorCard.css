@@ -1,0 +1,25 @@
+.color-container__card {
+    width: 100%;
+    max-width: 300px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.colorText-button {
+    background-color: rgba(255, 255, 255, 0.602);
+    padding: 20px;
+    border: unset;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px black;
+}
+
+.colorText-button:hover {
+    cursor: pointer;
+}
+
+.colorText-button:active {
+    background-color: rgba(255, 255, 255, 0.949);
+}
