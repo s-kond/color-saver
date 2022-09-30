@@ -14,21 +14,24 @@ const colorCodes = [
 function App() {
   const [colorArray, setColorArray] = useState(colorCodes);
 
-  function addColor(newColor){
+  function addColorCard(newColor){
       try {
-        console.log(newColor)
         setColorArray([...colorArray, {id: nanoid(), color: newColor}])
       } catch (error) {
       console.log(error.message)
     }
   }
 
+  function deleteColorCard(cardId){
+    setColorArray(colorArray.filter(card=> cardId === card.id ? "" : card ))
+  }
+
   return (
     <div className="App">
       <h1>Color Saver</h1>
-      <Create onHandleSubmit= {addColor}/>
+      <Create onHandleSubmit= {addColorCard}/>
       <div className='color-container'>
-        <ColorCard codes={colorArray} />
+        <ColorCard codes={colorArray} onHandleDelete={deleteColorCard}/>
       </div>
     </div>
   );
