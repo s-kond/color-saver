@@ -1,6 +1,6 @@
 import "./ColorCard.css"
 
-export function ColorCard({codes, onHandleDelete, onHandleEdit}) {
+export function ColorCard({colors, onHandleDelete, onHandleEdit}) {
     function copyCode(input){
         try {
             console.log(input);
@@ -11,14 +11,15 @@ export function ColorCard({codes, onHandleDelete, onHandleEdit}) {
     }
     
     return (
-        codes.map((code) => {
+        colors.map((entry) => {
             return (
-                <button className='color-container__card' onClick={()=> copyCode(code.color)} style={{backgroundColor: code.color}}>
+                <button className='color-container__card' onClick={()=> copyCode(entry.color)} style={{backgroundColor: entry.color}}>
+                    <p className="colorName">{entry.name}</p>
                     <input type="text" className="colorText-input" 
-                        value={code.color} onInput={(event)=>onHandleEdit(event, code.id, event.target.value)} 
+                        value={entry.color} onInput={(event)=>onHandleEdit(event, entry.id, event.target.value)} 
                         maxLength="7"/>
                     <button type="button" className="delete-button" 
-                        onClick={(event)=>onHandleDelete(event, code.id)}
+                        onClick={(event)=>onHandleDelete(event, entry.id)}
                     >X</button>
                 </button>
             )
