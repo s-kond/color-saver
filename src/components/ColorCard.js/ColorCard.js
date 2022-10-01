@@ -29,7 +29,7 @@ export function ColorCard({colors, onHandleDelete, onHandleEdit}) {
                     <p className="colorName">{entry.name}</p>
                     <input type="text" className="colorText-input" 
                         value={entry.color} onInput={(event)=>onHandleEdit(event, entry.id, event.target.value)} 
-                        maxLength="7"/>
+                        maxLength="7" minLength="4" pattern="^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$" title="3- or 6-digit hexcode. Only numbers and letters from A-F."/>
                     <button type="button" className="delete-button" 
                         onClick={(event)=>onHandleDelete(event, entry.id)}
                     >X</button>
