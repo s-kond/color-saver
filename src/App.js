@@ -7,9 +7,9 @@ import { setLocalStorage, loadLocalStorage } from './lib/localStorage';
 
 
 const colorCodes = [ 
-  {id: nanoid(), color: "#CD5C5C"}, 
-  {id: nanoid(), color: "#6495ED"}, 
-  {id: nanoid(), color: "#9FE2BF"}
+  {id: nanoid(), color: "#CD5C5C", name: "Chestnut Rose"}, 
+  {id: nanoid(), color: "#6495ED", name: "Cornflower Blue"}, 
+  {id: nanoid(), color: "#9FE2BF", name: "Sea Green"}
 ];
 
 function App() {
@@ -20,11 +20,18 @@ function App() {
   },[colorArray])
 
   function addColorCard(newColor){
-      try {
-        setColorArray([...colorArray, {id: nanoid(), color: newColor}])
-      } catch (error) {
-      console.log(error.message)
-    }
+    let cleanHex = newColor.substring(1);
+    console.log(cleanHex);
+    const apiURL = `https://www.thecolorapi.com/id?hex=${cleanHex}`
+    fetch(apiURL)
+      .then(response => response.json())
+      .then(data => {
+        try {
+          setColorArray([...colorArray, {id: nanoid(), color: newColor, name: data.name.value}])
+          console.log(colorArray);
+        } catch (error) {
+          console.log(error.message)
+    }})
   }
 
   function deleteColorCard(event, cardId){
@@ -34,15 +41,22 @@ function App() {
 
   function editColorCard(event, cardId, newColor){
     event.stopPropagation();
-    setColorArray(colorArray.map(card=>cardId === card.id ? {id: card.id, color: newColor} : card))
+    let cleanHex = newColor.substring(1);
+    console.log(cleanHex);
+    const apiURL = `https://www.thecolorapi.com/id?hex=${cleanHex}`
+    fetch(apiURL)
+      .then(response => response.json())
+      .then(data => {  
+      setColorArray(colorArray.map(card=>cardId === card.id ? {id: card.id, color: newColor, name: data.name.value} : card))
+  })
   }
 
   return (
     <div className="App">
       <h1>Color Saver</h1>
-      <Create onHandleSubmit= {addColorCard}/>
+      <Create onHandleSubmit={addColorCard}/>
       <div className='color-container'>
-        <ColorCard codes={colorArray} onHandleDelete={deleteColorCard} onHandleEdit={editColorCard}/>
+        <ColorCard colors={colorArray} onHandleDelete={deleteColorCard} onHandleEdit={editColorCard}/>
       </div>
     </div>
   );
