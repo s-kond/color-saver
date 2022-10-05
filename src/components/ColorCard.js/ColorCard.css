@@ -1,89 +1,89 @@
 .color-container__card {
-    position: relative;
-    width: 100%;
-    max-width: 300px;
-    height: 230px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 10px;
-    border-radius: 10px;
-    border: unset;
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  height: 230px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: 10px;
+  border: unset;
 }
 
 .color-container__card:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .colorName {
-    font-family: fantasy;
-    font-size: 1.25rem;
-    font-weight: bold;
-    padding: 10px 10px 5px 10px;
-    border-radius: 5px;
-    background-color: rgba(255, 255, 255, 0.602);
+  font-family: fantasy;
+  font-size: 1.25rem;
+  font-weight: bold;
+  padding: 10px 10px 5px 10px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.602);
 }
 
 .colorText-input {
-    background-color: rgba(255, 255, 255, 0.602);
-    padding: 20px;
-    text-align: center;
-    border: unset;
-    border-radius: 10px;
-    box-shadow: 1px 1px 1px black;
+  background-color: rgba(255, 255, 255, 0.602);
+  padding: 20px;
+  text-align: center;
+  border: unset;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px black;
 }
 
 .colorText-input:hover {
-    cursor: text;
+  cursor: text;
 }
 
 .colorText-input:active {
-    background-color: rgba(255, 255, 255, 0.949);
+  background-color: rgba(255, 255, 255, 0.949);
 }
 
 .colorText-input:invalid {
-    border: 2px solid red;
+  border: 2px solid red;
 }
 
 .delete-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    padding: 5px 10px;
-    color: black;
-    background-color: transparent;
-    border-radius: 20px;
-    border: 1px solid black;
-    font-weight: bold;
-    font-size: medium;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 10px;
+  color: black;
+  background-color: transparent;
+  border-radius: 20px;
+  border: 1px solid black;
+  font-weight: bold;
+  font-size: medium;
 }
 
 .delete-button:hover {
-    cursor: pointer;
-    background-color: rgba(255, 255, 255, 0.602);
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.602);
 }
 
 .copied-message {
-    position: absolute;
-    right: auto;
-    left: auto;
-    bottom: -5px;
-    padding: 7px;
-    background-color: antiquewhite;
-    border-radius: 10px;
+  position: absolute;
+  right: auto;
+  left: auto;
+  bottom: -5px;
+  padding: 7px;
+  background-color: antiquewhite;
+  border-radius: 10px;
 }
 
 .hidden {
-    opacity: 0;
-    animation: fadeOut ease 3s
+  opacity: 0;
+  animation: fadeOut ease 3s;
 }
 
 @keyframes fadeOut {
-    0% {
-        opacity:1;
-      }
-      100% {
-        opacity:0;
-      }
-} 
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
